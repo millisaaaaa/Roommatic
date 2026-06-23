@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>設備搜尋測試</title>
+</head>
+<body>
+
+<h2>搜尋電器</h2>
+
+<label>類型：</label>
+<select id="category">
+    <option value="air_conditioner">冷氣</option>
+    <option value="fan">風扇</option>
+    <option value="light">燈具</option>
+</select>
+<br><br>
+
+<label>品牌：</label>
+<input type="text" id="brand" placeholder="例如 Panasonic">
+<br><br>
+
+<label>型號：</label>
+<input type="text" id="model" placeholder="例如 UJ36 或完整型號">
+<br><br>
+
+<button onclick="search()">搜尋</button>
+
+<hr>
+
+<h3>結果：</h3>
+<pre id="result"></pre>
+
+<script>
+function search() {
+    const category = document.getElementById("category").value;
+    const brand = document.getElementById("brand").value;
+    const model = document.getElementById("model").value;
+
+    const url = `http://100.94.217.98:8000/appliances/search?category=${category}&brand=${brand}&model=${model}`;
+    //const url = `http://localhost:8000/appliances/search?category=${category}&brand=${brand}&model=${model}`;
+    //const url = `http://localhost:8000/appliances/search?...`
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(err => {
+            document.getElementById("result").innerText = "錯誤：" + err;
+        });
+}
+</script>
+
+</body>
+</html>

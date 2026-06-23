@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOMMATIC｜房間管理</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <div class="panel-overlay" id="panelOverlay"></div>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Smart Space Control</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management.html" class="nav-item active">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+
+          <a href="roomie.html" class="nav-item">
+            <span class="nav-icon">☻</span>
+            <span class="nav-label">Roomie</span>
+          </a>
+        </nav>
+
+       <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content room-page">
+     <section class="room-list-panel">
+        <section class="top-header">
+          <div class="header-left">
+            <h1>房間管理 Rooms</h1>
+            <p class="page-subtitle">查看各房間目前狀態，並進一步進入詳細資訊頁面。</p>
+          </div>
+
+          <div class="header-right">
+            <p>資料更新時間｜2026/03/09 14:30</p>
+            <p>統計區間｜2026/03/09 00:00 - 23:59</p>
+          </div>
+        </section>
+
+        <div class="room-grid">
+          <a href="room-detail.html?room=R101" class="room-card active">
+            <div class="room-top">
+              <span class="room-title">R101</span>
+              <span class="status using">使用中</span>
+            </div>
+            <div class="room-info">
+              <p>溫度：25.8°C</p>
+              <p>濕度：58%</p>
+              <p>人數：6</p>
+              <p>今日使用率：78%</p>
+            </div>
+          </a>
+
+          <a href="room-detail.html?room=R203" class="room-card">
+            <div class="room-top">
+              <span class="room-title">R203</span>
+              <span class="status idle">閒置中</span>
+            </div>
+            <div class="room-info">
+              <p>溫度：27.1°C</p>
+              <p>濕度：63%</p>
+              <p>人數：0</p>
+              <p>今日使用率：24%</p>
+            </div>
+          </a>
+
+          <a href="room-detail.html?room=R305" class="room-card active">
+            <div class="room-top">
+              <span class="room-title">R305</span>
+              <span class="status using">使用中</span>
+            </div>
+            <div class="room-info">
+              <p>溫度：26.6°C</p>
+              <p>濕度：60%</p>
+              <p>人數：3</p>
+              <p>今日使用率：61%</p>
+            </div>
+          </a>
+
+          <a href="room-detail.html?room=R102" class="room-card">
+            <div class="room-top">
+              <span class="room-title">R102</span>
+              <span class="status idle">閒置中</span>
+            </div>
+            <div class="room-info">
+              <p>溫度：26.2°C</p>
+              <p>濕度：57%</p>
+              <p>人數：0</p>
+              <p>今日使用率：18%</p>
+            </div>
+          </a>
+
+          <a href="room-detail.html?room=R205" class="room-card active">
+            <div class="room-top">
+              <span class="room-title">R205</span>
+              <span class="status using">使用中</span>
+            </div>
+            <div class="room-info">
+              <p>溫度：26.9°C</p>
+              <p>濕度：61%</p>
+              <p>人數：2</p>
+              <p>今日使用率：54%</p>
+            </div>
+          </a>
+
+          <a href="add-room.html" class="room-card add-room">
+            <div class="add-icon">＋</div>
+            <div class="add-text">新增房間</div>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="account-panel" id="accountPanel">
+  <div class="account-panel-inner">
+    <div class="panel-section">
+      <div class="panel-title">帳號</div>
+      <a href="account.html" class="panel-account-card">
+        <div class="panel-avatar" id="panelAvatar">U</div>
+        <div class="panel-account-info">
+          <strong id="panelUserName">使用者名稱</strong>
+          <span id="panelUserEmail">user@example.com</span>
+        </div>
+        <div class="panel-arrow">›</div>
+      </a>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">組織</div>
+      <div class="org-card">
+        <div class="org-header">
+          <div>
+            <strong id="orgName">組織名稱</strong>
+            <p>管理者：<span id="orgFounder">管理者</span></p>
+          </div>
+          <div class="plan-chip" id="orgPlanChip">方案</div>
+        </div>
+
+        <div class="org-stats">
+          <div class="org-stat">
+            <span>成員數</span>
+            <strong id="orgMemberCount">0 人</strong>
+          </div>
+          <div class="org-stat">
+            <span>可管理空間</span>
+            <strong id="orgSpaceCount">0 間</strong>
+          </div>
+        </div>
+
+        <div class="member-row" id="memberRow">
+          <div class="member-avatar">U</div>
+        </div>
+
+        <a href="team.html" class="org-manage-link">管理團隊 →</a>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">功能</div>
+      <div class="panel-menu">
+        <a href="guide.html" class="panel-menu-item">Guide</a>
+        <a href="contact.html" class="panel-menu-item">Contact</a>
+        <button type="button" class="panel-menu-item" id="logoutBtn">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="roomie-float" onclick="toggleRoomieChat()">
+    <div class="roomie-bubble">需要幫忙？請找 Roomie</div>
+    <img src="../images/Roomie.gif" alt="Roomie" class="roomie-gif">
+    </div>
+
+  <div class="roomie-chatbox" id="roomieChatbox">
+    <div class="roomie-chat-header">
+      <span>Roomie 智慧助理</span>
+      <button onclick="toggleRoomieChat()">×</button>
+    </div>
+
+    <div class="roomie-chat-body" id="roomieMessages">
+      <div class="roomie-message bot">
+        嗨嗨～我是 Roomie！<br>您今日想問什麼問題呢?
+      </div>
+    </div>
+
+    <div class="roomie-chat-input">
+      <input id="roomieInput" type="text" placeholder="問問 Roomie..." />
+      <button onclick="sendRoomieMessage()">送出</button>
+    </div>
+  </div>
+  <script>
+  function toggleRoomieChat() {
+    const box = document.getElementById("roomieChatbox");
+    box.classList.toggle("show");
+  }
+
+  async function sendRoomieMessage() {
+    const input = document.getElementById("roomieInput");
+    const messages = document.getElementById("roomieMessages");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    messages.innerHTML += `
+      <div class="roomie-message user">${text}</div>
+    `;
+
+    input.value = "";
+
+    messages.innerHTML += `
+      <div class="roomie-message bot" id="roomieLoading">Roomie 思考中...</div>
+    `;
+
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      const res = await fetch("http://100.94.217.98:8000/roomie", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+
+      document.getElementById("roomieLoading").remove();
+
+      messages.innerHTML += `
+        <div class="roomie-message bot">${data.paragraph || "Roomie 暫時沒有回覆喔～"}</div>
+      `;
+    } catch (err) {
+      document.getElementById("roomieLoading").remove();
+
+      messages.innerHTML += `
+        <div class="roomie-message bot">Roomie 連線失敗，請稍後再試～</div>
+      `;
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && document.activeElement.id === "roomieInput") {
+      sendRoomieMessage();
+    }
+  });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+fetch("/ROOMMATIC/php/get_rooms.php")
+.then(res => res.json())
+.then(data => {
+  const container = document.querySelector(".room-grid");
+
+  container.innerHTML = "";
+
+  data.forEach(room => {
+    container.innerHTML += `
+      <div class="room-card">
+        <div class="room-top">
+          <div class="room-title">${room.room_name}</div>
+          <div class="status using">使用中</div>
+        </div>
+        <div class="room-info">
+          人數：${room.capacity}<br>
+          位置：${room.location}
+        </div>
+      </div>
+    `;
+  });
+});
+</script>

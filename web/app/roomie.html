@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app.css">
+  <title>Roomie｜Roommatic AI Assistant</title>
+
+  <style>
+    .roomie-dashboard-page {
+      --roomie-bg: #f3f5f8;
+      --roomie-panel: #ffffff;
+      --roomie-text: #1d2430;
+      --roomie-muted: #6b7688;
+      --roomie-line: #e5eaf2;
+      --roomie-brand: #7f93ad;
+      --roomie-brand-deep: #4f6076;
+      --roomie-radius: 22px;
+      --roomie-shadow: 0 12px 30px rgba(22,34,56,.08);
+
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+
+    .hero{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(127,147,173,.2);
+      color:#60708a;
+      font-size:.9rem;
+      letter-spacing:.08em;
+      margin-bottom:16px;
+    }
+
+    .hero h1{
+      margin:0 0 12px;
+      font-size:clamp(2.4rem, 5vw, 4.2rem);
+      color:#2f4c7d;
+      letter-spacing:.05em;
+    }
+
+    .hero p{
+      margin:0 auto;
+      max-width:720px;
+      color:#6d7690;
+      line-height:1.9;
+      font-size:1rem;
+    }
+      .chat-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(127,147,173,.18);
+      border-radius: 32px;
+      box-shadow: 0 12px 30px rgba(22,34,56,.08);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .chat-header {
+      padding: 22px 26px;
+      border-bottom: 1px solid #e5eaf2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: linear-gradient(135deg, rgba(223,232,244,.82), rgba(248,244,230,.72));
+    }
+
+    .roomie-profile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .roomie-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 1px solid rgba(127,147,173,.2);
+    }
+
+    .roomie-gif {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .roomie-profile h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #2f4c7d;
+    }
+
+    .roomie-profile span {
+      display: block;
+      margin-top: 4px;
+      font-size: .88rem;
+      color: #6b7688;
+    }
+
+    .status-pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(127,147,173,.18);
+      color: #60708a;
+      font-size: .85rem;
+      white-space: nowrap;
+    }
+
+    .chat-messages {
+      height: 440px;
+      overflow-y: auto;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      max-width: 78%;
+      padding: 18px 20px;
+      border-radius: 22px;
+      line-height: 1.6;
+      font-size: 1rem;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .message.roomie {
+      align-self: flex-start;
+      background: #ffffff;
+      border: 1px solid rgba(127,147,173,.18);
+      color: #40516a;
+      border-bottom-left-radius: 8px;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, rgba(127,147,173,.32), rgba(255,232,145,.28));
+      color: #263244;
+      border: 1px solid rgba(127,147,173,.22);
+      border-bottom-right-radius: 8px;
+    }
+
+    .message.loading {
+      color: #7a8498;
+      font-style: italic;
+    }
+
+    .quick-prompts {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 26px 20px;
+    }
+
+    .quick-prompts button {
+      border: 1px solid rgba(127,147,173,.18);
+      background: rgba(255,255,255,.68);
+      color: #5f6f88;
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-size: .9rem;
+    }
+
+    .quick-prompts button:hover {
+      background: rgba(127,147,173,.12);
+    }
+
+    .chat-input-area {
+      padding: 20px 24px 24px;
+      border-top: 1px solid #e5eaf2;
+      background: rgba(255,255,255,.58);
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .chat-input-area textarea {
+      flex: 1;
+      min-height: 54px;
+      max-height: 140px;
+      resize: vertical;
+      border: 1px solid rgba(127,147,173,.28);
+      border-radius: 20px;
+      padding: 14px 16px;
+      outline: none;
+      font: inherit;
+      line-height: 1.6;
+      background: #fff;
+      color: #1d2430;
+    }
+
+    .chat-input-area textarea:focus {
+      border-color: #7f93ad;
+      box-shadow: 0 0 0 4px rgba(127,147,173,.12);
+    }
+
+    .send-btn {
+      border: none;
+      min-width: 92px;
+      height: 54px;
+      border-radius: 999px;
+      background: #2f333b;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(22,34,56,.1);
+    }
+
+    .send-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .send-btn:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .hint{
+      text-align:center;
+      margin-top:18px;
+      color:#7b86a0;
+      font-size:.9rem;
+    }
+
+    @media (max-width:700px){
+
+
+      .chat-header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .chat-messages{
+        height:420px;
+        padding:20px;
+      }
+
+      .message{
+        max-width:92%;
+      }
+
+      .chat-input-area{
+        flex-direction:column;
+      }
+
+      textarea,
+      .send-btn{
+        width:100%;
+      }
+    }
+    .roomie-avatar{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  border:1px solid rgba(127,147,173,.2);
+}
+
+.roomie-gif{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+  </style>
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Roomie</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management_real.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+
+          <a href="roomie.html" class="nav-item active">
+            <span class="nav-icon">☻</span>
+            <span class="nav-label">Roomie</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+
+      <section class="top-header">
+        <div class="header-left">
+          <h1>Roomie 智慧助理</h1>
+        </div>
+
+      </section>
+
+      <section class="roomie-dashboard-page">
+        <section class="chat-card">
+          <div class="chat-header">
+            <div class="roomie-profile">
+              <div class="roomie-avatar">
+                <img src="../images/Roomie.gif" alt="Roomie" class="roomie-gif">
+              </div>
+              <div>
+                <h2>Roomie 智慧助理</h2>
+                <span>可以協助空間管理、節能建議與系統操作說明</span>
+              </div>
+            </div>
+
+            <div class="status-pill">● Online</div>
+          </div>
+
+          <div id="chatMessages" class="chat-messages">
+            <div class="message roomie">
+              嗨嗨～我是 Roomie！有任何空間或節能問題，都可以問我喔！
+            </div>
+          </div>
+
+          <div class="quick-prompts">
+            <button onclick="usePrompt('現在房間很熱怎麼辦？')">現在房間很熱怎麼辦？</button>
+            <button onclick="usePrompt('請給我一個節能建議')">給我節能建議</button>
+            <button onclick="usePrompt('Roommatic 可以幫我做什麼？')">Roommatic 可以做什麼？</button>
+          </div>
+
+          <div class="chat-input-area">
+            <textarea id="roomieInput" placeholder="問問 Roomie..." rows="2"></textarea>
+            <button id="sendBtn" class="send-btn" onclick="askRoomie()">送出</button>
+          </div>
+        </section>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    const API_URL = `http://${window.location.hostname}:8000/roomie`;
+
+    const chatMessages = document.getElementById("chatMessages");
+    const input = document.getElementById("roomieInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    function addMessage(text, role) {
+      const div = document.createElement("div");
+      div.className = `message ${role}`;
+      div.textContent = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return div;
+    }
+
+    function usePrompt(text) {
+      input.value = text;
+      input.focus();
+    }
+
+    async function askRoomie() {
+      const message = input.value.trim();
+      if (!message) return;
+
+      addMessage(message, "user");
+      input.value = "";
+      sendBtn.disabled = true;
+
+      const loading = addMessage("Roomie 思考中，請稍等一下下...", "roomie loading");
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+
+        loading.remove();
+
+        addMessage(
+          data.paragraph || data.text || JSON.stringify(data, null, 2),
+          "roomie"
+        );
+
+      } catch (err) {
+        loading.remove();
+        addMessage("Roomie 暫時連線失敗，請確認後端 API 是否正在執行喔。", "roomie");
+        console.error(err);
+      } finally {
+        sendBtn.disabled = false;
+        input.focus();
+      }
+    }
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        askRoomie();
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

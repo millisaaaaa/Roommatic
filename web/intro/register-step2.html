@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>註冊｜Roommatic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="register-page">
+    <section class="register-card register-step2-card">
+      <!-- 標題 -->
+      <h1 class="step2-title">你想怎麼開始使用 ROOMMATIC？</h1>
+      <p class="step2-desc">根據你的使用需求，選擇最適合的開始方式</p>
+      <p class="step2-step-text">第 2 步：選擇開始方式</p>
+
+      <!-- 選擇卡 -->
+      <div class="step2-option-wrap">
+        <button type="button" class="step2-option-card" id="createCard" onclick="selectRegisterMode('create')">
+          <span class="step2-option-number">①</span>
+          <span class="step2-option-title">建立新組織</span>
+          <span class="step2-option-en">(Create Organization)</span>
+        </button>
+
+        <button type="button" class="step2-option-card" id="joinCard" onclick="selectRegisterMode('join')">
+          <span class="step2-option-number">②</span>
+          <span class="step2-option-title">加入既有組織</span>
+          <span class="step2-option-en">(Join Organization)</span>
+        </button>
+      </div>
+
+      <!-- 動態欄位 -->
+      <form id="registerStep2Form" class="step2-form" novalidate>
+        <!-- 建立新組織 -->
+        <div id="createFields" class="step2-fields" style="display: none;">
+          <div class="step2-field-row">
+            <label class="step2-label">組織名稱：</label>
+            <input type="text" id="createOrgName" class="step2-input" />
+          </div>
+
+          <div class="step2-field-row">
+            <label class="step2-label">組織類型：</label>
+            <select id="createOrgType" class="step2-select">
+              <option value="">請選擇組織類型</option>
+              <option value="personal">個人版（1-3 個空間）</option>
+              <option value="team">團隊版（4-10 個空間）</option>
+              <option value="enterprise">企業版（11-30 個空間）</option>
+            </select>
+          </div>
+
+          <div class="step2-field-row">
+            <label class="step2-label">加入組織碼：</label>
+            <input type="password" id="createOrgJoinCode" class="step2-input" />
+          </div>
+        </div>
+        <!-- 加入既有組織 -->
+        <div id="joinFields" class="step2-fields" style="display: none;">
+          <div class="step2-field-row">
+            <label class="step2-label">組織名稱：</label>
+            <input type="text" id="joinOrgName" class="step2-input" />
+          </div>
+
+          <div class="step2-field-row">
+            <label class="step2-label">加入組織碼：</label>
+            <input type="password" id="joinOrgPassword" class="step2-input" />
+          </div>
+        </div>
+        <p id="step2Error" class="register-error"></p>
+
+        <div class="step2-btn-wrap">
+          <button type="button" class="step2-back-btn" onclick="goToStep1()">返回上一步</button>
+          <button type="submit" class="register-next-btn">NEXT</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="register.js"></script>
+</body>
+</html>

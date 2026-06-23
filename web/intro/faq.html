@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>ROOMMATIC | FAQ</title>
+  
+    <style>
+			/* ===== FAQ 主區 ===== */
+			.faq-page {
+			  padding: 60px 20px 100px;
+			}
+
+			/* FAQ 頁首 */
+			.faq-hero {
+			  text-align: center;
+			  margin-bottom: 40px;
+			}
+
+			.faq-hero h1 {
+			  font-size: 3.2rem;
+			  letter-spacing: 6px;
+			  margin-bottom: 12px;
+			  color: #2e456f;
+			}
+
+			.faq-hero p {
+			  font-size: 1rem;
+			  color: #6d7690;
+			  margin: 0;
+			}
+
+			/* FAQ 白色大卡片外層 */
+			.faq-card-wrap {
+			  width: 100%;
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			  margin-bottom: -80px;
+			}
+
+			/* FAQ 主卡片 */
+			.faq-card {
+			  width: min(1100px, 88%);
+			  background: #ffffff; /* 這裡先改成白色 */
+			  border-radius: 36px; /* 大圓角 */
+			  padding: 60px 70px;
+			  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); /* 很淡的陰影 */
+			  position: relative;
+			}
+
+			/* 每一題 FAQ */
+			.faq-item {
+			  padding: 28px 0;
+			  border-bottom: 1px solid rgba(47, 62, 91, 0.12); /* 淡分隔線 */
+			}
+
+			.faq-item:last-child {
+			  border-bottom: none;
+			}
+
+			.faq-item h3 {
+			  font-size: 1.35rem;
+			  font-weight: 500;
+			  margin: 0 0 16px;
+			  color: #2f4c7d;
+			  line-height: 1.7;
+			}
+
+			.faq-item p {
+			  font-size: 1.05rem;
+			  margin: 0;
+			  color: #5e6780;
+			  line-height: 2;
+			}
+
+			.faq-tail-triangle {
+			  width: 0;
+			  height: 0;
+			  border-left: 260px solid transparent;
+			  border-right: 260px solid transparent;
+			  border-top: 120px solid #ffffff;
+			  margin-top: -2px;
+			  margin-bottom: -10px;
+			}
+
+		
+	</style>
+</head>
+<body>
+
+  <!-- ====== PUBLIC TOPBAR (only shows when NOT in app) ====== -->
+ <header class="topbar" id="publicTopbar">
+  <div class="topbar-inner">
+    <div class="brand" onclick="location.href='index.html'" style="cursor:pointer;">
+      <img src="../images/logo.png" alt="ROOMMATIC" class="logo-img">
+      <div>ROOMMATIC</div>
+    </div>
+
+    <nav class="nav">
+	  <a href="features.html">系統介紹</a>
+      <a href="faq.html">FAQ</a>
+      <a href="plans.html">方案</a>
+    </nav>
+
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="btn" onclick="location.href='login.html'">登入</button>
+    </div>
+  </div>
+</header>
+
+  <!-- FAQ 主區 -->
+  <main class="faq-page">
+
+    <!-- 標題 -->
+    <section class="faq-hero">
+      <h1>FAQ</h1>
+      <p>整理 ROOMMATIC 的常見問題，幫助你快速了解系統功能與使用方式。</p>
+    </section>
+
+    <!-- FAQ 白色卡片 -->
+    <section class="faq-card-wrap">
+      <div class="faq-card">
+
+        <div class="faq-item">
+          <h3>Q：跟一般智慧插座／智慧家電有什麼不同？</h3>
+          <p>A：ROOMMATIC 不只是「設備控制」，它整合人流與環境資料，提供空間監測、節能策略與成效表現。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：可以用在哪些空間？</h3>
+          <p>A：教室、會議室、實驗室、辦公室等需要管理人流與耗能的室內空間都適用。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：系統一定要搭配感測器才能使用嗎？</h3>
+          <p>A：是的，感測器提供人流、溫濕度與設備狀態資料，AI 才能做出較準確的判斷。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：可以只監測，不自動控制設備嗎？</h3>
+          <p>A：可以，系統提供「監測模式」，只顯示數據而不執行控制。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：哪些設備可以與 ROOMMATIC 進行控制？</h3>
+          <p>A：目前支援照明、空調及部分智慧電器設備，未來可再依需求擴充。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：系統是即時反應，還是有延遲？</h3>
+          <p>A：系統為即時監測，但 AI 判斷與自動調節可能會有 1～3 秒處理時間。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：節能設定會不會影響使用者的舒適度？</h3>
+          <p>A：系統會先判斷空間是否有人，並根據舒適範圍自動調整設備。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q：ROOMMATIC 真的可以省多少電？</h3>
+          <p>A：節能效果依空間使用情況不同，一般可節省約 15%～25% 電力。</p>
+        </div>
+      </div>
+		<div class="faq-tail-triangle"></div>
+    </section>
+
+    <!-- CTA 區 -->
+    <section class="cta-card">
+      <h3>想深入詢問更多問題嗎？</h3>
+      <p>讓 ROOMIE 小精靈，幫助您回答更詳細問題。</p>
+      <a href="#" class="cta-main-btn">詢問 ROOMIE</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  		<div class="footer">
+		  <div class="footer-top">
+			<div class="footer-brand">
+			  <img src="../images/logo.png" alt="Roommatic Logo" class="footer-logo">
+			  <div class="footer-logo-text">ROOMMATIC</div>
+			</div>
+			<a class="footer-contact-btn" href="mailto:${getEmail()}?subject=ROOMMATIC%20Contact">✉ CONTACT US</a>
+		  </div>
+
+		  <div class="footer-divider"></div>
+
+		  <div class="footer-bottom">
+			<div class="footer-info">
+			  <span>Tel: 123-456-789</span>
+			  <span>Email: ${getEmail()}</span>
+			</div>
+
+			<div class="footer-copy">© 2026 Roommatic Project. All rights reserved.</div>
+
+			<a class="go-top" href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})">GO TOP</a>
+		  </div>
+		</div>
+    </div>
+
+</body>
+</html>

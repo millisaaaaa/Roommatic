@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOMMATIC｜新增房間</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <div class="panel-overlay" id="panelOverlay"></div>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Smart Space Control</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management_real.html" class="nav-item active">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content add-room-page">
+      <section class="form-panel form-panel-centered">
+        <h2>Add Room</h2>
+        <p class="form-subtitle">新增房間基本資料與設定</p>
+
+        <form id="addRoomForm" class="form-card">
+          <div class="form-section">
+            <h3>基本資訊</h3>
+
+            <div class="form-group">
+              <label>房間名稱 *</label>
+              <input type="text" name="room_name" required>
+            </div>
+
+            
+
+            <div class="form-group">
+              <label>房間類型</label>
+              <input type="text" name="type" placeholder="請輸入房間類型（例如：會議室）">
+            </div>
+
+            
+
+          <div class="form-actions">
+            <a href="room-management_real.html" class="btn-cancel">取消</a>
+            <button type="submit" class="btn-primary">新增房間</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+ <div class="account-panel" id="accountPanel">
+  <div class="account-panel-inner">
+    <div class="panel-section">
+      <div class="panel-title">帳號</div>
+      <a href="account.html" class="panel-account-card">
+        <div class="panel-avatar" id="panelAvatar">U</div>
+        <div class="panel-account-info">
+          <strong id="panelUserName">使用者名稱</strong>
+          <span id="panelUserEmail">user@example.com</span>
+        </div>
+        <div class="panel-arrow">›</div>
+      </a>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">組織</div>
+      <div class="org-card">
+        <div class="org-header">
+          <div>
+            <strong id="orgName">組織名稱</strong>
+            <p>管理者：<span id="orgFounder">管理者</span></p>
+          </div>
+          <div class="plan-chip" id="orgPlanChip">方案</div>
+        </div>
+
+        <div class="org-stats">
+          <div class="org-stat">
+            <span>成員數</span>
+            <strong id="orgMemberCount">0 人</strong>
+          </div>
+          <div class="org-stat">
+            <span>可管理空間</span>
+            <strong id="orgSpaceCount">0 間</strong>
+          </div>
+        </div>
+
+        <div class="member-row" id="memberRow">
+          <div class="member-avatar">U</div>
+        </div>
+
+        <a href="team.html" class="org-manage-link">管理團隊 →</a>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">功能</div>
+      <div class="panel-menu">
+        <a href="guide.html" class="panel-menu-item">Guide</a>
+        <a href="contact.html" class="panel-menu-item">Contact</a>
+        <button type="button" class="panel-menu-item" id="logoutBtn">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+document.querySelector(".room-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch("add_room.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert("新增成功！");
+      window.location.href = "room-management_real.html";
+    } else {
+      alert("新增失敗");
+    }
+  });
+});
+</script>

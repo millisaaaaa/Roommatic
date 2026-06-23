@@ -1,0 +1,3 @@
+{"timestamp": "2026-04-10T01:35:08", "people_num": 0, "pmv": 0.831, "light_action": null, "fan_action": null, "ac_action": null, "ac_temp": null, "execute_mode": "mock", "result": "simulated", "note": "prototype auto-control flow"}
+{"timestamp": "2026-04-10T01:36:28", "people_num": 0, "pmv": 0.831, "light_action": null, "fan_action": null, "ac_action": null, "ac_temp": null, "execute_mode": "mock", "result": "simulated", "note": "prototype auto-control flow"}
+{"timestamp": "2026-04-10T01:36:29", "people_num": 0, "pmv": 0.831, "light_action": null, "fan_action": null, "ac_action": null, "ac_temp": null, "execute_mode": "mock", "result": "simulated", "note": "prototype auto-control flow"}

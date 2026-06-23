@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOMMATIC Team</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Team</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management_real.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <section class="top-header">
+        <div class="header-left">
+          <h1>管理團隊 Team</h1>
+        </div>
+      </section>
+
+      <section class="team-layout">
+        <article class="panel-card">
+          <div class="card-head">
+            <div>
+              <p class="card-eyebrow">ORGANIZATION</p>
+              <h3>組織資訊</h3>
+            </div>
+          </div>
+
+          <div class="info-list">
+            <div class="info-row">
+              <span class="info-label">組織名稱</span>
+              <strong id="teamOrgName">組織名稱</strong>
+            </div>
+            <div class="info-row">
+              <span class="info-label">管理者</span>
+              <strong id="teamFounder">管理者</strong>
+            </div>
+            <div class="info-row">
+              <span class="info-label">目前方案</span>
+              <strong id="teamPlanName">方案</strong>
+            </div>
+            <div class="info-row">
+              <span class="info-label">可管理空間</span>
+              <strong id="teamSpaceCount">0 間</strong>
+            </div>
+            <div class="info-row">
+              <span class="info-label">成員數</span>
+              <strong id="teamMemberCount">0 人</strong>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <a href="../intro/plans.html" class="brand-button" target="_blank">查看完整方案 →</a>
+          </div>
+        </article>
+
+        <article class="panel-card">
+          <div class="card-head">
+            <div>
+              <p class="card-eyebrow">MEMBERS</p>
+              <h3>團隊成員</h3>
+            </div>
+          </div>
+
+          <div class="member-list" id="teamMemberList">
+            <div class="member-item">
+              <div class="member-main">
+                <div class="member-circle">U</div>
+                <div>
+                  <strong>載入中...</strong>
+                  <p>請稍候</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- Account Panel -->
+  <div class="account-panel" id="accountPanel">
+    <div class="account-panel-inner">
+      <div class="panel-section">
+        <p class="panel-title">帳號</p>
+        <a href="account.html" class="panel-account-card">
+          <div class="panel-avatar" id="panelAvatar">U</div>
+          <div class="panel-account-info">
+            <strong id="panelUserName">使用者名稱</strong>
+            <span id="panelUserEmail">user@example.com</span>
+          </div>
+          <div class="panel-arrow">›</div>
+        </a>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">組織</p>
+        <div class="org-card">
+          <div class="org-header">
+            <div>
+              <strong id="orgName">組織名稱</strong>
+              <p>管理者：<span id="orgFounder">管理者</span></p>
+            </div>
+            <span class="plan-chip" id="orgPlanChip">方案</span>
+          </div>
+
+          <div class="org-stats">
+            <div class="org-stat">
+              <span>成員數</span>
+              <strong id="orgMemberCount">0 人</strong>
+            </div>
+            <div class="org-stat">
+              <span>可管理空間</span>
+              <strong id="orgSpaceCount">0 間</strong>
+            </div>
+          </div>
+
+          <div class="member-row" id="memberRow">
+            <div class="member-avatar">U</div>
+          </div>
+
+          <a href="team.html" class="org-manage-link">管理團隊 →</a>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">功能</p>
+        <div class="panel-menu">
+          <a href="guide.html" class="panel-menu-item">Guide</a>
+          <a href="mailto:yourmail@example.com" class="panel-menu-item">Contact</a>
+          <button type="button" class="panel-menu-item" id="logoutBtn">Log out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-overlay" id="panelOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

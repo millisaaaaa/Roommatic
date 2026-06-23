@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>註冊｜Roommatic</title>
+
+  <!-- 沿用你原本的主樣式 -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="register-page">
+    <section class="register-card register-step1-card">
+      <!-- 標題區 -->
+      <div class="register-title-wrap">
+        <div class="register-line"></div>
+        <h1 class="register-title">註冊</h1>
+        <div class="register-line"></div>
+      </div>
+
+      <p class="register-subtitle">歡迎加入！</p>
+      <p class="register-desc">
+        先建立你的基本帳號資料，接著選擇開始方式
+      </p>
+      <p class="register-step-text">第 1 步：填寫基本資料</p>
+
+      <!-- 內容區：左邊表單，右邊 Roomie -->
+      <div class="register-step1-content">
+        <!-- 左邊表單 -->
+        <div class="register-form-area">
+          <form id="registerStep1Form" class="register-form" novalidate>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="register-input"
+              placeholder="USERNAME"
+            />
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="register-input"
+              placeholder="EMAIL ADDRESS"
+            />
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="register-input"
+              placeholder="PASSWORD"
+            />
+
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="register-input"
+              placeholder="CONFIRM PASSWORD"
+            />
+
+            <!-- 錯誤訊息 -->
+            <p id="step1Error" class="register-error"></p>
+
+            <!-- 已有帳號 -->
+            <p class="register-login-link-wrap">
+              已經有帳號？
+              <a href="login.html" class="register-login-link">前往登入</a>
+            </p>
+
+            <!-- 下一步 -->
+            <button type="submit" class="register-next-btn">NEXT</button>
+          </form>
+        </div>
+
+        <!-- 右邊 Roomie 圖 -->
+        <div class="register-visual-area">
+          <button type="button" class="roomie-bubble">Let’s get started!</button>
+
+          <!-- 先用靜態圖，之後你要換 GIF 再換 -->
+          <img
+            src="../images/Roomie.gif"
+            alt="Roomie"
+            class="register-roomie"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script src="register.js"></script> 
+</body>
+</html>

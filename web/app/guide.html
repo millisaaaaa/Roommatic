@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOMMATIC Guide</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Guide</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management_real.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <section class="top-header">
+        <div class="header-left">
+          <h1>使用指引 Guide</h1>
+        </div>
+      </section>
+
+      <section class="guide-page-compact">
+        <section class="guide-intro-plain">
+          <p class="guide-mini-title">GETTING STARTED</p>
+          <h2>開始使用 ROOMMATIC</h2>
+          <p class="guide-intro-copy">
+            第一次使用系統時，建議先完成空間建立，再進入 Dashboard、Rooms 與 Reports 查看即時狀態與統計資料。
+          </p>
+        </section>
+
+        <section class="guide-flow-compact">
+          <article class="guide-step-row compact">
+            <div class="guide-step-node compact">01</div>
+            <div class="guide-step-card compact">
+              <h3>建立空間</h3>
+              <p>先新增要管理的空間，輸入空間名稱與基本資料，系統才會開始有可追蹤內容。</p>
+            </div>
+          </article>
+
+          <div class="guide-flow-line compact"></div>
+
+          <article class="guide-step-row compact">
+            <div class="guide-step-node compact">02</div>
+            <div class="guide-step-card compact">
+              <h3>查看 Rooms</h3>
+              <p>在 Rooms 頁面查看每個空間的目前狀態，確認哪些空間正在使用、哪些空間閒置中。</p>
+            </div>
+          </article>
+
+          <div class="guide-flow-line compact"></div>
+
+          <article class="guide-step-row compact">
+            <div class="guide-step-node compact">03</div>
+            <div class="guide-step-card compact">
+              <h3>查看 Dashboard</h3>
+              <p>從 Dashboard 快速掌握整體空間狀況、用電資訊與近期概況。</p>
+            </div>
+          </article>
+
+          <div class="guide-flow-line compact"></div>
+
+          <article class="guide-step-row compact">
+            <div class="guide-step-node compact">04</div>
+            <div class="guide-step-card compact">
+              <h3>查看 Reports</h3>
+              <p>前往 Reports 查看趨勢圖、空間比較與設備狀態統計等報表內容。</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="guide-support">
+          <div class="guide-support-head">
+            <p class="guide-mini-title">IN-SYSTEM HELP</p>
+            <h3>操作上遇到問題？</h3>
+            <p class="guide-support-copy">
+              這裡整理的是系統內最常見的操作疑問；若想更了解產品功能與方案內容，可前往 FAQ 查看。
+            </p>
+          </div>
+
+          <div class="guide-accordion">
+            <details class="guide-faq-item">
+              <summary>為什麼 Dashboard 沒有顯示完整資料？</summary>
+              <p>若剛建立空間，系統可能尚未累積足夠資料，因此部分圖表或統計內容會先以初始狀態顯示。</p>
+            </details>
+
+            <details class="guide-faq-item">
+              <summary>新增空間後，為什麼 Rooms 沒有立刻更新？</summary>
+              <p>請先確認空間資料是否有完整儲存；若仍未顯示，可重新整理頁面或再次確認新增內容是否成功送出。</p>
+            </details>
+
+            <details class="guide-faq-item">
+              <summary>Reports 裡的圖表是代表即時資料嗎？</summary>
+              <p>Reports 主要用於查看整理後的趨勢與比較結果，部分內容可能不是即時秒數更新，而是依據系統同步頻率顯示。</p>
+            </details>
+
+            <details class="guide-faq-item">
+              <summary>如果看到的數值和預期不一樣怎麼辦？</summary>
+              <p>可先確認感測資料是否正常同步，並檢查該空間目前是否處於使用中。若仍有異常，再聯繫管理者或系統支援。</p>
+            </details>
+          </div>
+
+          <div class="guide-help-inline">
+            <p class="guide-mini-title">MORE HELP</p>
+            <h3>想知道更多產品資訊？</h3>
+            <div class="guide-help-links">
+              <a href="../intro/faq.html" class="ghost-link" target="_blank">前往 FAQ</a>
+              <a href="mailto:yourmail@example.com" class="ghost-link">聯絡我們</a>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <!-- Account Panel -->
+  <div class="account-panel" id="accountPanel">
+    <div class="account-panel-inner">
+      <div class="panel-section">
+        <p class="panel-title">帳號</p>
+        <a href="account.html" class="panel-account-card">
+          <div class="panel-avatar" id="panelAvatar">U</div>
+          <div class="panel-account-info">
+            <strong id="panelUserName">使用者名稱</strong>
+            <span id="panelUserEmail">user@example.com</span>
+          </div>
+          <div class="panel-arrow">›</div>
+        </a>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">組織</p>
+        <div class="org-card">
+          <div class="org-header">
+            <div>
+              <strong id="orgName">組織名稱</strong>
+              <p>管理者：<span id="orgFounder">管理者</span></p>
+            </div>
+            <span class="plan-chip" id="orgPlanChip">方案</span>
+          </div>
+
+          <div class="org-stats">
+            <div class="org-stat">
+              <span>成員數</span>
+              <strong id="orgMemberCount">0 人</strong>
+            </div>
+            <div class="org-stat">
+              <span>可管理空間</span>
+              <strong id="orgSpaceCount">0 間</strong>
+            </div>
+          </div>
+
+          <div class="member-row" id="memberRow">
+            <div class="member-avatar">U</div>
+          </div>
+
+          <a href="team.html" class="org-manage-link">管理團隊 →</a>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">功能</p>
+        <div class="panel-menu">
+          <a href="guide.html" class="panel-menu-item">Guide</a>
+          <a href="mailto:yourmail@example.com" class="panel-menu-item">Contact</a>
+          <button type="button" class="panel-menu-item" id="logoutBtn">Log out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-overlay" id="panelOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

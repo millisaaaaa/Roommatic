@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登入｜ROOMMATIC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="register-page">
+    <section class="register-card login-card">
+      <!-- 標題 -->
+      <div class="register-title-wrap">
+        <div class="register-line"></div>
+        <h1 class="register-title">登入</h1>
+        <div class="register-line"></div>
+      </div>
+
+      <p class="login-subtitle">歡迎回來！</p>
+      <p class="login-desc">請登入你的帳號以繼續使用 ROOMMATIC</p>
+
+      <div class="login-content">
+        <!-- 表單 -->
+        <div class="login-form-area">
+          <form id="loginForm" class="login-form" novalidate>
+            <input
+              type="email"
+              id="loginEmail"
+              class="register-input"
+              placeholder="EMAIL ADDRESS"
+            />
+
+            <input
+              type="password"
+              id="loginPassword"
+              class="register-input"
+              placeholder="PASSWORD"
+            />
+
+            <p id="loginError" class="register-error"></p>
+
+            <div class="login-links">
+              <button type="button" class="text-link-btn" onclick="showForgotPassword()">忘記密碼？</button>
+              <span class="login-divider">|</span>
+              <a href="register-step1.html" class="register-login-link">我沒有帳號，前往註冊</a>
+            </div>
+
+            <button type="submit" class="register-next-btn">LOG IN</button>
+          </form>
+        </div>
+
+        <!-- Roomie -->
+        <div class="login-visual-area">
+          <button type="button" class="roomie-bubble">Hi, welcome back!</button>
+          <img src="../images/Roomie.gif" alt="Roomie" class="register-roomie" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

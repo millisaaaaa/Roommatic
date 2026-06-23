@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOMMATIC Reports</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Reports</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management_real.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item active">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+
+          <a href="roomie.html" class="nav-item">
+            <span class="nav-icon">☻</span>
+            <span class="nav-label">Roomie</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <section class="top-header">
+        <div class="header-left">
+          <h1>成效報表 Reports</h1>
+        </div>
+
+        <div class="header-right">
+          <p>資料更新時間｜<span id="reportsUpdatedAt">-</span></p>
+          <p>統計來源｜整體空間耗能資料</p>
+        </div>
+      </section>
+
+      <section class="reports-page-v3">
+
+        <!-- 新增：報表脈絡資訊卡 -->
+        <div class="reports-context-inline" id="reportsMetaCard">
+          <span id="reportsOrgTitle">目前組織：組織名稱</span>
+          <span class="reports-context-divider">｜</span>
+          <span id="reportsDataNote">本頁圖表為模擬資料示意</span>
+        </div>
+
+        <!-- 第一區：整體耗能趨勢 -->
+        <article class="panel-card report-hero-card">
+          <div class="card-head report-hero-head">
+            <div>
+              <p class="card-eyebrow">OVERALL ENERGY TREND</p>
+              <h3>整體耗能趨勢</h3>
+              <p class="report-subtext">
+                以整體空間為單位觀察耗能變化。可切換月模式與週模式，快速查看全年耗能輪廓與季節波動。
+              </p>
+            </div>
+
+            <div class="report-filter-row report-filter-row-hero">
+              <div class="report-filter-group">
+                <label for="trendMode" class="report-filter-label">檢視模式</label>
+                <select id="trendMode" class="report-select">
+                  <option value="month" selected>月模式</option>
+                  <option value="week">週模式</option>
+                </select>
+              </div>
+
+              <div class="report-filter-group">
+                <label for="trendYear" class="report-filter-label">年份</label>
+                <select id="trendYear" class="report-select">
+                  <option value="2026" selected>2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-main-figure">
+
+            <!-- 月模式：12 個月柱狀圖 -->
+            <div class="report-main-chart monthly-view">
+              <div class="month-chart-headline">
+                <span class="chart-mode-badge">月模式｜2026 年 1–12 月</span>
+                <span class="chart-mode-note">每根柱代表一個月總耗能（kWh）</span>
+              </div>
+
+              <div class="report-month-chart">
+                <div class="report-y-axis">
+                  <span>1600</span>
+                  <span>1200</span>
+                  <span>800</span>
+                  <span>400</span>
+                  <span>0</span>
+                </div>
+
+                <div class="report-month-plot">
+                  <div class="month-grid-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <div class="summer-band summer-band-q3">
+                    <span>夏季月份</span>
+                  </div>
+
+                  <div class="month-bars">
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 42%;"></div>
+                      <span>1月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 40%;"></div>
+                      <span>2月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 46%;"></div>
+                      <span>3月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 51%;"></div>
+                      <span>4月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 58%;"></div>
+                      <span>5月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar summer" style="height: 76%;"></div>
+                      <span>6月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar summer" style="height: 88%;"></div>
+                      <span>7月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar summer" style="height: 92%;"></div>
+                      <span>8月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar summer" style="height: 79%;"></div>
+                      <span>9月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 63%;"></div>
+                      <span>10月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 49%;"></div>
+                      <span>11月</span>
+                    </div>
+                    <div class="month-bar-item">
+                      <div class="month-bar" style="height: 44%;"></div>
+                      <span>12月</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 週模式：52 週折線圖 -->
+            <div class="report-main-chart weekly-view is-hidden">
+              <div class="month-chart-headline">
+                <span class="chart-mode-badge">週模式｜2026 年 W1–W52</span>
+                <span class="chart-mode-note">每個點代表一週總耗能（kWh）</span>
+              </div>
+
+              <div class="report-week-chart">
+                <div class="report-y-axis">
+                  <span>420</span>
+                  <span>320</span>
+                  <span>220</span>
+                  <span>120</span>
+                  <span>0</span>
+                </div>
+
+                <div class="report-week-plot">
+                  <div class="week-grid-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <div class="season-band season-summer">
+                    <span>夏季月份</span>
+                  </div>
+
+                  <svg viewBox="0 0 1000 280" class="year-week-line-svg" preserveAspectRatio="none">
+                    <polyline
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="4"
+                      points=""
+                      class="year-week-line"
+                    />
+                    <g class="year-week-dots"></g>
+                  </svg>
+
+                  <div class="week-month-labels">
+                    <span>1月</span>
+                    <span>2月</span>
+                    <span>3月</span>
+                    <span>4月</span>
+                    <span>5月</span>
+                    <span>6月</span>
+                    <span>7月</span>
+                    <span>8月</span>
+                    <span>9月</span>
+                    <span>10月</span>
+                    <span>11月</span>
+                    <span>12月</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- 第二區：整體比較趨勢 + 整體成效摘要 -->
+        <div class="reports-lower-grid">
+
+          <article class="panel-card report-block comparison-block">
+            <div class="card-head">
+              <div>
+                <p class="card-eyebrow">OVERALL COMPARISON</p>
+                <h3>整體比較趨勢</h3>
+                <p class="report-subtext">
+                  可勾選不同年度資料進行比較，觀察整體耗能變化與改善趨勢。
+                </p>
+              </div>
+            </div>
+
+            <div class="compare-control-wrap">
+              <div class="compare-chip-group">
+                <label class="compare-chip active year-2026">
+                  <input type="checkbox" checked>
+                  <span>2026</span>
+                </label>
+
+                <label class="compare-chip active year-2025">
+                  <input type="checkbox" checked>
+                  <span>2025</span>
+                </label>
+
+                <label class="compare-chip year-2024">
+                  <input type="checkbox">
+                  <span>2024</span>
+                </label>
+              </div>
+
+              <p class="compare-helper-text">
+                預設顯示 2026 與 2025。建議同時比較 2 組資料，閱讀會最清楚。
+              </p>
+            </div>
+
+            <div class="line-chart-area comparison-line-wrap">
+              <div class="line-chart-legend comparison-legend">
+                <span class="legend-item">
+                  <span class="legend-dot legend-2026"></span>
+                  <span>2026</span>
+                </span>
+                <span class="legend-item">
+                  <span class="legend-dot legend-2025"></span>
+                  <span>2025</span>
+                </span>
+                <span class="legend-item legend-disabled">
+                  <span class="legend-dot legend-2024"></span>
+                  <span>2024</span>
+                </span>
+              </div>
+
+              <div class="fake-line-chart comparison-chart-large">
+                <div class="line-chart-y-axis">
+                  <span>1600</span>
+                  <span>1200</span>
+                  <span>800</span>
+                  <span>400</span>
+                  <span>0</span>
+                </div>
+
+                <div class="chart-grid-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <svg viewBox="0 0 520 240" class="line-chart-svg comparison-svg" preserveAspectRatio="none">
+                  <polyline
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    points="20,175 60,170 100,160 140,150 180,132 220,88 260,52 300,40 340,78 380,116 420,145 500,166"
+                    class="comparison-line comparison-line-2026"
+                  />
+                  <polyline
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    points="20,186 60,180 100,168 140,159 180,144 220,108 260,78 300,69 340,96 380,128 420,152 500,176"
+                    class="comparison-line comparison-line-2025"
+                  />
+
+                  <g class="comparison-dots comparison-dots-2026">
+                    <circle cx="20" cy="175" r="4.5"></circle>
+                    <circle cx="60" cy="170" r="4.5"></circle>
+                    <circle cx="100" cy="160" r="4.5"></circle>
+                    <circle cx="140" cy="150" r="4.5"></circle>
+                    <circle cx="180" cy="132" r="4.5"></circle>
+                    <circle cx="220" cy="88" r="4.5"></circle>
+                    <circle cx="260" cy="52" r="4.5"></circle>
+                    <circle cx="300" cy="40" r="4.5"></circle>
+                    <circle cx="340" cy="78" r="4.5"></circle>
+                    <circle cx="380" cy="116" r="4.5"></circle>
+                    <circle cx="420" cy="145" r="4.5"></circle>
+                    <circle cx="500" cy="166" r="4.5"></circle>
+                  </g>
+
+                  <g class="comparison-dots comparison-dots-2025">
+                    <circle cx="20" cy="186" r="4.5"></circle>
+                    <circle cx="60" cy="180" r="4.5"></circle>
+                    <circle cx="100" cy="168" r="4.5"></circle>
+                    <circle cx="140" cy="159" r="4.5"></circle>
+                    <circle cx="180" cy="144" r="4.5"></circle>
+                    <circle cx="220" cy="108" r="4.5"></circle>
+                    <circle cx="260" cy="78" r="4.5"></circle>
+                    <circle cx="300" cy="69" r="4.5"></circle>
+                    <circle cx="340" cy="96" r="4.5"></circle>
+                    <circle cx="380" cy="128" r="4.5"></circle>
+                    <circle cx="420" cy="152" r="4.5"></circle>
+                    <circle cx="500" cy="176" r="4.5"></circle>
+                  </g>
+                </svg>
+
+                <div class="line-chart-xlabels month-xlabels">
+                  <span>1月</span>
+                  <span>2月</span>
+                  <span>3月</span>
+                  <span>4月</span>
+                  <span>5月</span>
+                  <span>6月</span>
+                  <span>7月</span>
+                  <span>8月</span>
+                  <span>9月</span>
+                  <span>10月</span>
+                  <span>11月</span>
+                  <span>12月</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel-card report-block summary-block">
+            <div class="card-head">
+              <div>
+                <p class="card-eyebrow">OVERALL PERFORMANCE SUMMARY</p>
+                <h3>整體成效摘要</h3>
+                <p class="report-subtext">
+                  依整體空間資料整理本期重點指標，協助快速判讀耗能變化與高峰使用情況。
+                </p>
+              </div>
+            </div>
+
+            <div class="room-compare-table performance-table performance-table-overall">
+              <div class="table-head">
+                <span>指標</span>
+                <span>2026</span>
+                <span>2025</span>
+                <span>變化幅度</span>
+              </div>
+
+              <div class="table-row">
+                <span>年度總耗能</span>
+                <span>13,820 kWh</span>
+                <span>14,960 kWh</span>
+                <span class="change-down">下降 7.6%</span>
+              </div>
+
+              <div class="table-row">
+                <span>夏季耗能占比</span>
+                <span>35%</span>
+                <span>39%</span>
+                <span class="change-down">下降 4%</span>
+              </div>
+
+              <div class="table-row">
+                <span>平均月耗能</span>
+                <span>1,152 kWh</span>
+                <span>1,246 kWh</span>
+                <span class="change-down">下降 7.5%</span>
+              </div>
+
+              <div class="table-row">
+                <span>最高耗能月份</span>
+                <span>8月</span>
+                <span>8月</span>
+                <span class="change-neutral">相同月份</span>
+              </div>
+
+              <div class="table-row">
+                <span>高峰使用時段</span>
+                <span>14:00–16:00</span>
+                <span>15:00–17:00</span>
+                <span class="change-shift">提前 1 小時</span>
+              </div>
+
+              <div class="table-row">
+                <span>平均空間使用率</span>
+                <span>68%</span>
+                <span>63%</span>
+                <span class="change-up">上升 5%</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+
+
+  <!-- Account Panel -->
+  <div class="account-panel" id="accountPanel">
+    <div class="account-panel-inner">
+      <div class="panel-section">
+        <p class="panel-title">帳號</p>
+        <a href="account.html" class="panel-account-card">
+          <div class="panel-avatar" id="panelAvatar">U</div>
+          <div class="panel-account-info">
+            <strong id="panelUserName">使用者名稱</strong>
+            <span id="panelUserEmail">user@example.com</span>
+          </div>
+          <div class="panel-arrow">›</div>
+        </a>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">組織</p>
+        <div class="org-card">
+          <div class="org-header">
+            <div>
+              <strong id="orgName">組織名稱</strong>
+              <p>管理者：<span id="orgFounder">管理者</span></p>
+            </div>
+            <span class="plan-chip" id="orgPlanChip">方案</span>
+          </div>
+
+          <div class="org-stats">
+            <div class="org-stat">
+              <span>成員數</span>
+              <strong id="orgMemberCount">0 人</strong>
+            </div>
+            <div class="org-stat">
+              <span>可管理空間</span>
+              <strong id="orgSpaceCount">0 間</strong>
+            </div>
+          </div>
+
+          <div class="member-row" id="memberRow">
+            <div class="member-avatar">U</div>
+          </div>
+
+          <a href="team.html" class="org-manage-link" id="orgManageLink">管理團隊 →</a>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">功能</p>
+        <div class="panel-menu">
+          <a href="guide.html" class="panel-menu-item">Guide</a>
+          <a href="mailto:yourmail@example.com" class="panel-menu-item">Contact</a>
+          <button type="button" class="panel-menu-item" id="logoutBtn">Log out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-overlay" id="panelOverlay"></div>
+
+  
+  <div class="roomie-float" onclick="toggleRoomieChat()">
+    <div class="roomie-bubble">需要幫忙？請找 Roomie</div>
+    <img src="../images/Roomie.gif" alt="Roomie" class="roomie-gif">
+    </div>
+
+  <div class="roomie-chatbox" id="roomieChatbox">
+    <div class="roomie-chat-header">
+      <span>Roomie 智慧助理</span>
+      <button onclick="toggleRoomieChat()">×</button>
+    </div>
+
+    <div class="roomie-chat-body" id="roomieMessages">
+      <div class="roomie-message bot">
+        嗨嗨～我是 Roomie！<br>您今日想問什麼問題呢?
+      </div>
+    </div>
+
+    <div class="roomie-chat-input">
+      <input id="roomieInput" type="text" placeholder="問問 Roomie..." />
+      <button onclick="sendRoomieMessage()">送出</button>
+    </div>
+  </div>
+  <script>
+  function toggleRoomieChat() {
+    const box = document.getElementById("roomieChatbox");
+    box.classList.toggle("show");
+  }
+
+  async function sendRoomieMessage() {
+    const input = document.getElementById("roomieInput");
+    const messages = document.getElementById("roomieMessages");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    messages.innerHTML += `
+      <div class="roomie-message user">${text}</div>
+    `;
+
+    input.value = "";
+
+    messages.innerHTML += `
+      <div class="roomie-message bot" id="roomieLoading">Roomie 思考中...</div>
+    `;
+
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      const res = await fetch("http://100.94.217.98:8000/roomie", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+
+      document.getElementById("roomieLoading").remove();
+
+      messages.innerHTML += `
+        <div class="roomie-message bot">${data.paragraph || "Roomie 暫時沒有回覆喔～"}</div>
+      `;
+    } catch (err) {
+      document.getElementById("roomieLoading").remove();
+
+      messages.innerHTML += `
+        <div class="roomie-message bot">Roomie 連線失敗，請稍後再試～</div>
+      `;
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && document.activeElement.id === "roomieInput") {
+      sendRoomieMessage();
+    }
+  });
+  </script>
+  <script>
+function formatDateTime(value) {
+  if (!value) return "-";
+
+  const date = new Date(String(value).replace(" ", "T"));
+  if (Number.isNaN(date.getTime())) return value;
+
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  const hh = String(date.getHours()).padStart(2, "0");
+  const mm = String(date.getMinutes()).padStart(2, "0");
+
+  return `${y}/${m}/${d} ${hh}:${mm}`;
+}
+
+fetch("../php/get_rooms.php")
+  .then(res => res.json())
+  .then(data => {
+    if (!data.success) {
+      console.error(data.message || "reports 讀取更新時間失敗");
+      return;
+    }
+
+    const updatedAt = document.getElementById("reportsUpdatedAt");
+    if (updatedAt) {
+      updatedAt.textContent = formatDateTime(data.latest_update_time);
+    }
+  })
+  .catch(err => {
+    console.error("reports 更新時間讀取失敗:", err);
+  });
+</script>
+  <script src="script.js"></script>
+</body>
+</html>

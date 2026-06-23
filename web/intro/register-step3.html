@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>註冊｜Roommatic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="register-page">
+    <section class="register-card register-step3-card">
+      <!-- 標題 -->
+      <h1 class="step3-title">確認你的設定</h1>
+      <p class="step3-desc">請確認以下資料無誤，並同意相關條款後開始使用 ROOMMATIC</p>
+      <p class="step3-step-text">第 3 步：確認與同意條款</p>
+
+      <!-- 確認資料區 -->
+      <div class="step3-summary-wrap">
+        <!-- 左邊：帳號基本資料 -->
+        <div class="step3-summary-card">
+          <div class="step3-summary-tag">帳號基本資料</div>
+          <div class="step3-summary-content">
+            <p><span>Username</span><span id="summaryUsername">-</span></p>
+            <p><span>Email Address</span><span id="summaryEmail">-</span></p>
+            <p><span>Password</span><span id="summaryPassword">******</span></p>
+          </div>
+        </div>
+
+        <!-- 右邊：開始方式 -->
+        <div class="step3-summary-card">
+          <div class="step3-summary-tag">開始方式</div>
+          <div class="step3-summary-content">
+            <p><span>開始方式</span><span id="summaryMode">-</span></p>
+            <p><span>組織名稱</span><span id="summaryOrgName">-</span></p>
+            <p id="summaryOrgTypeRow"><span>組織類型</span><span id="summaryOrgType">-</span></p>
+            <p id="summaryOrgPasswordRow" style="display: none;"><span>組織密碼</span><span id="summaryOrgPassword">******</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 同意條款 -->
+      <div class="step3-agree-wrap">
+        <label class="step3-agree-label">
+          <input type="checkbox" id="agreeTerms" />
+          我已閱讀並同意
+          <button type="button" class="step3-link-btn" onclick="openPolicyModal('terms')">服務條款</button>
+          與
+          <button type="button" class="step3-link-btn" onclick="openPolicyModal('privacy')">隱私政策</button>
+        </label>
+      </div>
+
+      <p id="step3Error" class="register-error"></p>
+
+      <!-- 按鈕 -->
+      <div class="step3-btn-wrap">
+        <button type="button" class="step2-back-btn" onclick="goToStep2()">返回上一步</button>
+        <button type="button" class="step3-finish-btn" onclick="finishRegister()">完成設定</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="policyModal" class="policy-modal" style="display: none;">
+    <div class="policy-modal-content">
+      <button type="button" class="policy-close-btn" onclick="closePolicyModal()">×</button>
+      <h2 id="policyModalTitle">服務條款</h2>
+      <div id="policyModalBody" class="policy-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>

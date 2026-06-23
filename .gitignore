@@ -1,0 +1,38 @@
+# Python
+.venv/
+venv/
+req_venv/
+test_venv/
+__pycache__/
+*.py[cod]
+
+# Node.js
+node_modules/
+
+# Secrets
+.env
+*.env
+db_connect.php
+secrets.json
+*.key
+
+# Runtime data
+data/
+logs/
+*.log
+
+# YOLO / camera outputs
+runs/
+output/
+tmp/
+scripts/vision/images/
+scripts/vision/count.json
+boxed_latest.png
+*.mp4
+*.avi
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

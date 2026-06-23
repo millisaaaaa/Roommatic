@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOMMATIC Dashboard</title>
+  <link rel="stylesheet" href="app.css">
+
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="dashboard.html" class="brand-area">
+            <img src="../images/logo.png" alt="ROOMMATIC Logo" class="brand-logo-image">
+            <div class="brand-text-group">
+              <span class="brand-title">ROOMMATIC</span>
+              <span class="brand-sub">Dashboard</span>
+            </div>
+          </a>
+
+          <button class="toggle-btn" id="toggleSidebar" aria-label="切換側邊欄">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item active">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <a href="room-management_real.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Rooms</span>
+          </a>
+
+          <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span class="nav-label">Reports</span>
+          </a>
+
+          <a href="roomie.html" class="nav-item">
+            <span class="nav-icon">☻</span>
+            <span class="nav-label">Roomie</span>
+          </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="account-trigger" id="accountTrigger" aria-label="開啟帳號與組織面板">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-meta">
+              <span class="account-name" id="sidebarUserName">使用者名稱</span>
+              <span class="account-role" id="sidebarUserRole">身分</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <section class="top-header">
+        <div class="header-left">
+          <h1>總覽 Dashboard</h1>
+        </div>
+        <div class="header-right">
+          <p>資料更新時間｜<span id="dashboardUpdatedAt">-</span></p>
+          <p>今日統計區間｜<span id="dashboardDateRange">-</span></p>
+        </div>
+      </section>
+
+      <!-- Top rail -->
+      <section class="top-rail">
+        <div class="metric-card metric-rooms">
+          <div class="metric-icon">⌂</div>
+          <div class="metric-body">
+            <p class="metric-label">使用中空間數</p>
+            <h2>
+              <span class="active-num" id="activeRoomCount">0</span>
+              <span class="slash-num">/ <span id="totalRoomCount">0</span></span>
+            </h2>
+          </div>
+        </div>
+
+        <div class="metric-card metric-energy">
+          <div class="metric-icon">⚡</div>
+          <div class="metric-body">
+            <p class="metric-label">
+              本日估算用電量
+              <span class="metric-info-wrap">
+                <span class="metric-info-icon">i</span>
+                <span class="metric-tooltip">
+                  目前為估算值。<br>
+                  依據冷氣與燈光的啟用時長，搭配設備額定功率推估本日用電量。
+                </span>
+              </span>
+            </p>
+            <h2 id="todayEnergyValue">0 kWh</h2>
+          </div>
+        </div>
+
+<div class="metric-card metric-saving">
+  <div class="metric-icon">🍃</div>
+  <div class="metric-body">
+    <p class="metric-label">
+      本月預估節省電量
+      <span class="metric-info-wrap">
+        <span class="metric-info-icon">i</span>
+        <span class="metric-tooltip">
+          目前為推估值。<br>
+          以未優化前基準耗能與目前估算耗能的差額，換算每日節省量後推估本月節能效果。
+        </span>
+      </span>
+    </p>
+    <h2 id="monthlySavingValue" style="font-size: 28px !important; line-height: 1.1 !important;">0 kWh</h2>
+  </div>
+</div>
+
+        <a href="../intro/index.html" class="brand-entry" target="_blank">
+          <img src="../images/hero2.png" alt="ROOMMATIC" class="brand-entry-image">
+          <span class="brand-entry-link">認識 ROOMMATIC →</span>
+        </a>
+      </section>
+
+      <!-- Dashboard content -->
+      <section class="dashboard-grid">
+        <article class="panel-card rooms-card">
+          <div class="card-head">
+            <div>
+              <p class="card-eyebrow">ROOMS</p>
+              <h3>空間狀態</h3>
+            </div>
+            <a href="room-management_real.html" class="card-link">查看全部</a>
+          </div>
+          <div class="room-status-list" id="dashboardRoomStatusList">
+            <div class="room-status-item">
+              <div class="room-info">
+                <strong>Loading...</strong>
+                <span>正在讀取房間資料</span>
+              </div>
+              <div class="room-badge idle">
+                <span class="dot"></span>
+                載入中
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+      <article class="panel-card trend-card">
+        <div class="card-head">
+          <div>
+            <p class="card-eyebrow">REPORT TREND</p>
+            <h3>報表趨勢預覽</h3>
+            <p class="report-preview-note">2026 年下半年（月模式示意）</p>
+          </div>
+          <a href="reports.html" class="card-link">前往 Reports</a>
+        </div>
+
+        <div class="dashboard-report-preview" id="dashboardReportPreview"></div>
+      </article>
+
+        <article class="guide-panel">
+          <div class="guide-panel-text">
+            <p class="guide-panel-title">尚未熟悉操作流程？</p>
+            <p class="guide-panel-desc">可先前往 Guide 查看建立空間與基本使用方式。</p>
+            <a href="guide.html" class="guide-panel-link">前往 Guide →</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- Roomie 
+  <div class="roomie-float">
+    <div class="roomie-bubble">需要幫忙？可先查看 Guide。</div>
+    <img src="../images/roomie.gif" alt="Roomie" class="roomie-gif">
+  </div>
+  -->
+
+  <!-- Account Panel -->
+  <div class="account-panel" id="accountPanel">
+    <div class="account-panel-inner">
+      <div class="panel-section">
+        <p class="panel-title">帳號</p>
+        <a href="account.html" class="panel-account-card">
+          <div class="panel-avatar" id="panelAvatar">LK</div>
+          <div class="panel-account-info">
+            <strong id="panelUserName">Lucy Kuo</strong>
+            <span id="panelUserEmail">lucy@example.com</span>
+          </div>
+          <div class="panel-arrow">›</div>
+        </a>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">組織</p>
+        <div class="org-card">
+          <div class="org-header">
+            <div>
+              <strong id="orgName">ROOMMATIC Demo Team</strong>
+              <p>建立者：<span id="orgFounder">使用者名稱</span></p>
+            </div>
+            <span class="plan-chip" id="orgPlanChip">團隊版</span>
+          </div>
+
+          <div class="org-stats">
+            <div class="org-stat">
+              <span>成員數</span>
+              <strong id="orgMemberCount">5 人</strong>
+            </div>
+            <div class="org-stat">
+              <span>可管理空間</span>
+              <strong id="orgSpaceCount">10 間</strong>
+            </div>
+          </div>
+
+          <div class="member-row" id="memberRow">
+            <div class="member-avatar">LK</div>
+          </div>
+
+          <a href="team.html" class="org-manage-link" id="orgManageLink">管理團隊 →</a>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-title">功能</p>
+        <div class="panel-menu">
+          <a href="guide.html" class="panel-menu-item">Guide</a>
+          <a href="mailto:yourmail@example.com" class="panel-menu-item">Contact</a>
+          <button type="button" class="panel-menu-item" id="logoutBtn">Log out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-overlay" id="panelOverlay"></div>
+
+  <div class="roomie-float" onclick="toggleRoomieChat()">
+  <div class="roomie-bubble">需要幫忙？請找 Roomie</div>
+  <img src="../images/Roomie.gif" alt="Roomie" class="roomie-gif">
+  </div>
+
+<div class="roomie-chatbox" id="roomieChatbox">
+  <div class="roomie-chat-header">
+    <span>Roomie 智慧助理</span>
+    <button onclick="toggleRoomieChat()">×</button>
+  </div>
+
+  <div class="roomie-chat-body" id="roomieMessages">
+    <div class="roomie-message bot">
+      嗨嗨～我是 Roomie！<br>您今日想問什麼問題呢?
+    </div>
+  </div>
+
+  <div class="roomie-chat-input">
+    <input id="roomieInput" type="text" placeholder="問問 Roomie..." />
+    <button onclick="sendRoomieMessage()">送出</button>
+  </div>
+</div>
+<script>
+function toggleRoomieChat() {
+  const box = document.getElementById("roomieChatbox");
+  box.classList.toggle("show");
+}
+
+async function sendRoomieMessage() {
+  const input = document.getElementById("roomieInput");
+  const messages = document.getElementById("roomieMessages");
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  messages.innerHTML += `
+    <div class="roomie-message user">${text}</div>
+  `;
+
+  input.value = "";
+
+  messages.innerHTML += `
+    <div class="roomie-message bot" id="roomieLoading">Roomie 思考中...</div>
+  `;
+
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const res = await fetch("http://100.94.217.98:8000/roomie", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ message: text })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("roomieLoading").remove();
+
+    messages.innerHTML += `
+      <div class="roomie-message bot">${data.paragraph || "Roomie 暫時沒有回覆喔～"}</div>
+    `;
+  } catch (err) {
+    document.getElementById("roomieLoading").remove();
+
+    messages.innerHTML += `
+      <div class="roomie-message bot">Roomie 連線失敗，請稍後再試～</div>
+    `;
+  }
+
+  messages.scrollTop = messages.scrollHeight;
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && document.activeElement.id === "roomieInput") {
+    sendRoomieMessage();
+  }
+});
+</script>
+
+<script>
+const API_BASE = "../php";
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+function formatDateTime(value) {
+  if (!value) return "-";
+
+  const date = new Date(String(value).replace(" ", "T"));
+  if (Number.isNaN(date.getTime())) return value;
+
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  const hh = String(date.getHours()).padStart(2, "0");
+  const mm = String(date.getMinutes()).padStart(2, "0");
+
+  return `${y}/${m}/${d} ${hh}:${mm}`;
+}
+
+function formatTodayRange() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  return `${y}/${m}/${d} 00:00 - 23:59`;
+}
+
+function renderDashboardRooms(rooms) {
+  const list = document.getElementById("dashboardRoomStatusList");
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  rooms.forEach(room => {
+    const people = Number(room.people_num || 0);
+    const isUsing = people > 0;
+
+    list.innerHTML += `
+      <a class="room-status-item" href="room-detail.html?room_id=${room.room_id}">
+        <div class="room-info">
+          <strong>${room.room_name}</strong>
+          <span>${room.type || "-"}</span>
+        </div>
+        <div class="room-badge ${isUsing ? "active" : "idle"}">
+          <span class="dot"></span>
+          ${isUsing ? "使用中" : "閒置中"}
+        </div>
+      </a>
+    `;
+  });
+}
+
+/* 上方 metric cards */
+fetch(`${API_BASE}/get_dashboard_metrics.php`)
+  .then(res => res.json())
+  .then(data => {
+    if (!data.success) {
+      console.error(data.message || "讀取 dashboard metrics 失敗");
+      return;
+    }
+
+    const m = data.metrics || {};
+
+    setText("activeRoomCount", m.active_rooms ?? 0);
+    setText("totalRoomCount", m.total_rooms ?? 0);
+    setText("todayEnergyValue", `${m.today_energy_kwh ?? 0} kWh`);
+    setText("monthlySavingValue", `${m.monthly_saving_kwh ?? 0} kWh`);
+  })
+  .catch(err => {
+    console.error("dashboard metrics 讀取失敗:", err);
+  });
+
+/* 下方 room-status-list + 最新更新時間 */
+fetch(`${API_BASE}/get_rooms.php`)
+  .then(res => res.json())
+  .then(data => {
+    if (!data.success) {
+      console.error(data.message || "讀取房間資料失敗");
+      return;
+    }
+
+    setText("dashboardUpdatedAt", formatDateTime(data.latest_update_time));
+    setText("dashboardDateRange", formatTodayRange());
+
+    renderDashboardRooms(data.rooms || []);
+  })
+  .catch(err => {
+    console.error("dashboard 房間資料讀取失敗:", err);
+  });
+</script>
+
+<script src="script.js"></script>
+</body>
+
+</html>
