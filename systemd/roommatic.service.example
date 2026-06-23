@@ -1,0 +1,17 @@
+# /etc/systemd/system/roommatic.service
+[Unit]
+Description=Roommatic Main Control Loop
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/Roommatic
+ExecStart=/home/pi/Roommatic/.venv/bin/python -m scripts.main.main
+Restart=always
+RestartSec=5
+
+#  ^a  ^e^m ^m    
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
