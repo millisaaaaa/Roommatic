@@ -1,4 +1,4 @@
-# Roommatic
+# Roommatic 
 <<<<<<< HEAD
 
 Roommatic is a Raspberry Pi based smart room management system. It integrates temperature and humidity sensing, people counting, PMV thermal comfort calculation, device control, MariaDB database storage, and a web interface.
